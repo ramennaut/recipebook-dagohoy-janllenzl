@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{{ name }} Details{% endblock %}
+{% block title %}{{ name }}{% endblock %}
 {% block content %}
 <h2>{{ name }}</h2>
 <ul>
@@ -9,5 +9,5 @@
     <li>{{ ingredient.name }} - {{ ingredient.quantity }}</li>
     {% endfor %}
 </ul>
-<a href="/recipes/list">Go back to recipe list</a>
+<button><a href="/recipes/list">Go back to the recipe list</a></button>
 {% endblock %}
