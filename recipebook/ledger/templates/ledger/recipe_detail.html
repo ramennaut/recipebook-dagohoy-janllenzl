@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
+
 {% block title %}{{object.name}}{% endblock %}
 {% block content %}
     <h2>{{ recipe.name }}</h2>
+    <p>Author: {{ recipe.author.profile.name }}</p>
     <ul>
         {% for recipe_ingredient in recipe.ingredients.all %}
             <li>{{ recipe_ingredient.ingredient.name }} ({{ recipe_ingredient.quantity }})</li>
         {% endfor %}
     </ul>
     <a href="{% url 'ledger:recipes_list' %}">Back to Recipe List</a>
+    <br><br>
+    <form method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Logout</button>
+    </form>
 {% endblock %}

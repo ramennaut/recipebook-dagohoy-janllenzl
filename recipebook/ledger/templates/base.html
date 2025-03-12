@@ -5,9 +5,9 @@
     <title>{% block title %}Recipe Book{% endblock %}</title>
 </head>
 <body>
-    <header>
-        <h1>Recipe Book</h1>
-    </header>
+    <h1>Recipe Book</h1>
+    {% block login_logout %}
+    {% endblock %}
     <div class="content">
         {% block content %}
         {% endblock %}
