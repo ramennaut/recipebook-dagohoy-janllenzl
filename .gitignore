@@ -5,3 +5,5 @@ sample-env/
 __pycache__/
 myenv/
 db.sqlite3
+media/images/*
+!media/images/.gitkeep

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Recipe, Ingredient, RecipeIngredient
-from .models import Profile
+from .models import Profile, RecipeImage
 
 
 class ProfileInline(admin.StackedInline):
@@ -16,8 +16,13 @@ class RecipeIngredientInline(admin.TabularInline):
     model = RecipeIngredient
 
 
+class RecipeImageInline(admin.TabularInline):
+    model = RecipeImage
+    extra = 1
+
+
 class RecipeAdmin(admin.ModelAdmin):
-    inlines = [RecipeIngredientInline]
+    inlines = [RecipeIngredientInline, RecipeImageInline]
 
 
 admin.site.register(Recipe, RecipeAdmin)

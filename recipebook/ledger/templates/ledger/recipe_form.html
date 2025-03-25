@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Add new recipe{% endblock %}
+
+{% block content %}
+
+    <h2>Create a new recipe</h2>
+    
+    <form method="POST" style="display: flex; gap: 10px; align-items: center;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save recipe</button>
+    </form>
+
+    <hr>
+
+    <div style="display: flex; gap: 10px; align-items: center;">
+        <form action="{% url 'ledger:recipes_list' %}">
+            <input type="submit" value="Go back to recipe list" />
+        </form>
+    
+        <form method="POST" action="{% url 'logout' %}">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+
+{% endblock %}
