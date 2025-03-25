@@ -1,27 +1,23 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block title %}Add new image for {{ recipe.name }}{%
+endblock %} {% block content %}
 
-{% block title %}Add new image for {{ recipe.name }}{% endblock %}
+<h2>Upload image for {{ recipe.name }}</h2>
 
-{% block content %}
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Save image</button>
+</form>
 
-    <h2>Upload image for {{ recipe.name }}</h2>
+<hr />
 
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save image</button>
-    </form>
+<div style="display: flex; gap: 10px; align-items: center">
+  <form action="{% url 'ledger:recipes_list' %}">
+    <input type="submit" value="Go back to recipe list" />
+  </form>
 
-    <hr>
-
-    <div style="display: flex; gap: 10px; align-items: center;">
-        <form action="{% url 'ledger:recipes_list' %}">
-            <input type="submit" value="Go back to recipe list" />
-        </form>
-    
-        <form method="POST" action="{% url 'logout' %}">
-            <button type="submit">Logout</button>
-        </form>
-    </div>
+  <form method="POST" action="{% url 'logout' %}">
+    <button type="submit">Logout</button>
+  </form>
+</div>
 
 {% endblock %}

@@ -1,27 +1,20 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block title %}Recipes List{% endblock %} {% block
+content %}
 
-{% block title %}Recipes List{% endblock %}
+<h2>Recipe List</h2>
 
-{% block content %}
+<ul>
+  {% for recipe in object_list %}
+  <li>
+    <a href="{% url 'ledger:recipe_detail' pk=recipe.pk %}">
+      {{ recipe.name }}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
 
-  <h2>Recipe List</h2>
-
-  <ul>
-
-    {% for recipe in object_list %}
-    <li>
-      <a href="{% url 'ledger:recipe_detail' pk=recipe.pk %}">
-        {{ recipe.name }}
-      </a>
-    </li>
-    {% endfor %}
-
-  </ul>
-
-  {% if user.is_authenticated %}
-  <form action="{% url 'ledger:recipe_add' %}">
-    <input type="submit" value="+ Add new recipe" />
-  </form>
-  {% endif %}
-
-{% endblock %}
+{% if user.is_authenticated %}
+<form action="{% url 'ledger:recipe_add' %}">
+  <input type="submit" value="+ Add new recipe" />
+</form>
+{% endif %} {% endblock %}

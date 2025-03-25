@@ -3,12 +3,30 @@ from django.contrib.auth.views import LoginView, LogoutView
 from .views import RecipeListView, RecipeDetailView, RecipeCreateView, UploadRecipeImageView
 
 urlpatterns = [
-    path('recipes/list/', RecipeListView.as_view(), name='recipes_list'),
-    path('recipe/<int:pk>/', RecipeDetailView.as_view(), name='recipe_detail'),
-    path('recipe/add/', RecipeCreateView.as_view(), name='recipe_add'),
-    path('recipe/<int:pk>/add_image/', UploadRecipeImageView.as_view(), name='recipe_image'),
-    path('login/', LoginView.as_view(), name='login'),
-    path('logout/', LogoutView.as_view(), name='logout'),
+    path(
+        'recipes/list/',
+        RecipeListView.as_view(),
+        name='recipes_list'),
+    path(
+        'recipe/<int:pk>/',
+        RecipeDetailView.as_view(),
+        name='recipe_detail'),
+    path(
+        'recipe/add/',
+        RecipeCreateView.as_view(),
+        name='recipe_add'),
+    path(
+        'recipe/<int:pk>/add_image/',
+        UploadRecipeImageView.as_view(),
+        name='recipe_image'),
+    path(
+        'login/',
+        LoginView.as_view(),
+        name='login'),
+    path(
+        'logout/',
+        LogoutView.as_view(),
+        name='logout'),
 ]
 
 app_name = "ledger"
